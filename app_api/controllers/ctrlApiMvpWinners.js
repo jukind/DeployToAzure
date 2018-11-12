@@ -14,7 +14,9 @@ const winnersList = function (req, res) {
 				.status(200)
 				.json(winners);
 		}
-});};
+}
+);
+};
 
 const addWinner = function (req, res) {
 	res

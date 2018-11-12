@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const ctrlApiMajorWinners = require(../controllers/ctrlApiMajorWinners');
-const ctrlApiMvpWinners = require(../controllers/ctrlApiMvpWinners');
+const ctrlApiMajorWinners = require('../controllers/ctrlApiMajorWinners');
+const ctrlApiMvpWinners = require('../controllers/ctrlApiMvpWinners');
 
 //list of csgo major winners: teams and years.
 
