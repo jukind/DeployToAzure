@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const dbURI = 'mongodb://jukind:kindstedt1@ds024748.mlab.com:24748/workshop';
 
-mongoose.connect(dbURI);
+mongoose.connect(dbURI,{ useNewUrlParser: true });
 
 // Printing a connection status message to the console
 mongoose.connection.on('connected', function(){
