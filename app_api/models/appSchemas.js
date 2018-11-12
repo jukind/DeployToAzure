@@ -7,8 +7,8 @@ const mvpSchema = new mongoose.Schema({year:String, player:String, team:String})
 /* Models will contain compiled instances of the schemas
  * so they can be used in the app later on
  */
-mongoose.model('MajorWinners', majorSchema, 'MajorWinners');
-mongoose.model('MvpWinners', mvpSchema,'MvpWinners');
+mongoose.model('majorWinners', majorSchema, 'MajorWinners');
+mongoose.model('mvpWinners', mvpSchema,'MvpWinners');
 
 
 
