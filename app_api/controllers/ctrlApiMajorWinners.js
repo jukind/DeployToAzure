@@ -16,9 +16,15 @@ const winnersList = function (req, res) {
 
 
 const addWinner = function (req, res) {
-    res
-        .status(201)
-        .json({"Add winner player" : "Work in progress"});
+	majorWinnersModel.create(req.body, function(err, newWinner){
+		if (err) {
+			res.status(400).json(err);
+		}
+		else{
+			res.status(201).json(newWinner);
+			}
+		}
+	);
 };
 
 module.exports = {

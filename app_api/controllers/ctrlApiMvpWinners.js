@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const mvpWinnersModel = mongoose.model('mvpWinners');
 
 const winnersList = function (req, res) {
+	
 	mvpWinnersModel.find({}, function (err, winners) {
 		if (err){
 			res
@@ -23,6 +24,7 @@ const addWinner = function (req, res) {
 		.status(201)
 		.json({"Add winner player" : "Work in progress"});
 };
+
 module.exports = {
 	winnersList,
 	addWinner
