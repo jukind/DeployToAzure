@@ -1,7 +1,7 @@
 const request = require('request');
-const apiURL = require('./apiURL');
+const apiURL = require('./apiURLs');
 
-const winnerlistt = function(req, res) {
+const winnerlist = function(req, res) {
 	const path = '/api/majorwinners';
 	const requestOptions = {
 		url : 'http://yourapi.com/api/path',
@@ -28,7 +28,7 @@ const winnerlistt = function(req, res) {
 );
 };
 module.exports = {
-	winnerlistt
+	winnerlist
 };
 
 	
