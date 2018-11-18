@@ -14,6 +14,6 @@ router.get('/mvp', ctrlmvp.winnerlist);  //
 router
 	.route('/major/add')
 	.get(ctrlmajor.showForm)
-	.post/ctrlmajor.addData);
+	.post(ctrlmajor.addData);
 
 module.exports = router;

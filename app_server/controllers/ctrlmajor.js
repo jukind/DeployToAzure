@@ -61,8 +61,8 @@ const winnerlist = function(req, res) {
 );
 };
 module.exports = {
-	winnerList
-	showForm
+	winnerlist,
+	showForm,
 	addData
 };
 
