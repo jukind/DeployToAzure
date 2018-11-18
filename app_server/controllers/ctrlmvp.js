@@ -1,24 +1,32 @@
+const request = require('request');
+const apiURL = require('./apiURL');
 
-const winnerlist = function(req, res){
-    res.render('mvp',{
-        winners:
-        [
-            {year:'2013', player:'Jesper "JW" Wecksell', team:'Fnatic'},
-            {year:'2014', player:'Jaroslaw "pashaBiceps" Jarzabkowski',  team:'VP'},
-            {year:'2014', player:'Adam "friberg" Friberg',  team:'NIP'},
-            {year:'2014', player:'Vincent "Happy" Schopenhauer',  team:'LDLC'},
-            {year:'2015', player:'Olof "olofmeister" Kajbjer',  team:'Fnatic'},
-            {year:'2015', player:'Robin "flusha" Rönnquist',  team:'Fnatic'},
-            {year:'2015', player:'Kenny "kennyS" Schrub',  team:'Envy'},
-            {year:'2016', player:'Marcelo "coldzera" David',  team:'LG'},
-            {year:'2016', player:'Marcelo "coldzera" David',  team:'SK'},
-            {year:'2017', player:'Markus "Kjaerbye" Kjaerby',  team:'Astralis'},
-            {year:'2017', player:'Dauren "AdreN" Kystaubayev',  team:'Gambit'},
-            {year:'2018', player:'Tarik "tarik" Celik',  team:'C9'},
-            {year:'2018', player:'Nicolai "device" Reedtz',  team:'Astralis'}
-        ]});
+const winnerlistt = function(req, res) {
+	const path = '/api/mvpwinners';
+	const requestOptions = {
+		url : 'http://yourapi.com/api/path',
+		method : 'GET',
+		json : {},
+		qs : {}
+	};
+
+	request(
+	requestOptions, 
+	function (err, response, body){
+		if (err) {
+			res.render('error', {message: err.message});
+		} else if (response.statusCode !== 200) {
+			res.render('error', {message: 'Error accessing API: ' + response.statusMessage + " ("+ response.statusCode + ")" });
+		} else if (! (body instanceof Array)) {
+			res.render('error', {message: 'Unexpected response data'});
+		} else if (!body.length) {
+			res.render('error', {message: 'No documents in collection'});
+		} else {
+			res.render('mvpwinners', {winners: body});
+		}
+	}
+);
 };
-
 module.exports = {
-    winnerlist
+	winnerlistt
 };

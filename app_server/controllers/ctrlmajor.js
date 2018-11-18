@@ -1,23 +1,34 @@
+const request = require('request');
+const apiURL = require('./apiURL');
 
-const winnerlist = function(req, res){
-    res.render('major',{
-        winners:
-        [
-            {year:'2013', team:'Fnatic'},
-            {year:'2014', team:'VP'},
-            {year:'2014', team:'NIP'},
-            {year:'2014', team:'LDLC'},
-            {year:'2015', team:'Fnatic'},
-            {year:'2015', team:'Fnatic'},
-            {year:'2015', team:'Envy'},
-            {year:'2016', team:'LG'},
-            {year:'2016', team:'SK'},
-            {year:'2017', team:'Astralis'},
-            {year:'2017', team:'Gambit'},
-            {year:'2018', team:'C9'},
-            {year:'2018', team:'Astralis'}
-        ]});
+const winnerlistt = function(req, res) {
+	const path = '/api/majorwinners';
+	const requestOptions = {
+		url : 'http://yourapi.com/api/path',
+		method : 'GET',
+		json : {},
+		qs : {}
+	};
+
+	request(
+	requestOptions, 
+	function (err, response, body){
+		if (err) {
+			res.render('error', {message: err.message});
+		} else if (response.statusCode !== 200) {
+			res.render('error', {message: 'Error accessing API: ' + response.statusMessage + " ("+ response.statusCode + ")" });
+		} else if (! (body instanceof Array)) {
+			res.render('error', {message: 'Unexpected response data'});
+		} else if (!body.length) {
+			res.render('error', {message: 'No documents in collection'});
+		} else {
+			res.render('majorwinners', {winners: body});
+		}
+	}
+);
 };
 module.exports = {
-    winnerlist
+	winnerlistt
 };
+
+	
