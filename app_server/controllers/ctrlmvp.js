@@ -4,7 +4,7 @@ const apiURL = require('./apiURLs');
 const winnerlist = function(req, res) {
 	const path = '/api/mvpwinners';
 	const requestOptions = {
-		url : 'http://yourapi.com/api/path',
+		url : apiURL.server + path,
 		method : 'GET',
 		json : {},
 		qs : {}
