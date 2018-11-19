@@ -8,11 +8,11 @@ const ctrlmvp = require('../controllers/ctrlmvp'); // ...
 
 // Defining the routes and associating the routes to their corresponding controllers
 router.get('/', ctrlMain.index);  // Home page
-router.get('/major', ctrlmajor.winnerlist);  //
+router.get('/majorWinners', ctrlmajor.winnerlist);  //
 router.get('/mvp', ctrlmvp.winnerlist);  //
 
 router
-	.route('/major/add')
+	.route('/majorWinners/add')
 	.get(ctrlmajor.showForm)
 	.post(ctrlmajor.addData);
 

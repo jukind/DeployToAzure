@@ -2,11 +2,11 @@ const request = require('request');
 const apiURL = require('./apiURLs');
 
 const showForm = function(req, res) {
-	res.render('major_add');
+	res.render('majorWinners_add');
 };
 
 const addData = function(req, res) {
-	const path = '/api/major';
+	const path = '/api/majorWinners';
 	
 	const postdata = {
 		year: req.body.year,
@@ -23,7 +23,7 @@ const addData = function(req, res) {
 		requestOptions,
 		function (err, response) {
 			if (response.statusCode === 201) {
-				res.redirect('/major');
+				res.redirect('/majorWinners');
 			} else {
 				res.render('error', {message: 'Error adding data: ' +
 				response.statusMessage + 
@@ -35,9 +35,9 @@ const addData = function(req, res) {
 	
 	
 const winnerlist = function(req, res) {
-	const path = '/api/majorwinners';
+	const path = '/api/majorWinners';
 	const requestOptions = {
-		url : 'http://yourapi.com/api/path',
+		url : apiURL.server + path,
 		method : 'GET',
 		json : {},
 		qs : {}
@@ -55,7 +55,7 @@ const winnerlist = function(req, res) {
 		} else if (!body.length) {
 			res.render('error', {message: 'No documents in collection'});
 		} else {
-			res.render('majorwinners', {winners: body});
+			res.render('majorWinners', {winners: body});
 		}
 	}
 );

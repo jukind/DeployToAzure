@@ -7,7 +7,7 @@ const ctrlApiMvpWinners = require('../controllers/ctrlApiMvpWinners');
 //list of csgo major winners: teams and years.
 
 router
-	.route('/majorwinners')
+	.route('/majorWinners')
 	.get(ctrlApiMajorWinners.winnersList)
 	.post(ctrlApiMajorWinners.addWinner);
 
